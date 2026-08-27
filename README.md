@@ -1,83 +1,79 @@
 # QuoteTrace
 
-CLI em Python para transformar documentos operacionais e comerciais em uma cotação estruturada, rastreável e calculada de forma determinística.
+QuoteTrace is a Python CLI that turns operational and commercial travel documents into a structured, traceable quotation with deterministic costing.
 
-O projeto foi desenvolvido para o desafio técnico de Lead AI Engineer da Aterra. A implementação privilegia correção financeira e auditabilidade: cada valor calculado registra quantidade, tarifa, fórmula, nível de confiança e referência ao documento de origem.
+The project was built for Aterra's Lead AI Engineer technical exercise. It prioritizes financial correctness and auditability: every calculated amount records its quantity, rate, formula, confidence level, and source-document evidence.
 
-## Sobre o projeto
+## About the project
 
-Documentos de viagem frequentemente misturam reservas, tarifas, exceções comerciais, correções por e-mail e informações incompletas. Produzir apenas um total esconderia essas incertezas e poderia transformar uma associação incorreta em um erro financeiro aparentemente válido.
+Travel documents commonly combine bookings, supplier rates, commercial exceptions, email corrections, and incomplete information. Producing a single total would hide those uncertainties and could make an incorrect association look financially authoritative.
 
-O QuoteTrace separa o problema em responsabilidades explícitas:
+QuoteTrace separates the workflow into explicit responsibilities:
 
 ```text
-Documentos
+Documents
     ↓
-Extração e normalização
+Extraction and normalization
     ↓
-Validação de evidências e regras comerciais
+Evidence and commercial-rule validation
     ↓
-Cálculos determinísticos com Decimal
+Deterministic calculations with Decimal
     ↓
-JSON rastreável + itens que exigem revisão
+Traceable JSON + review items
 ```
 
-### Estratégia de extração
+### Extraction strategy
 
-Existem dois caminhos de execução:
+The application provides two execution paths:
 
-- **Adaptador determinístico:** usado para os documentos fornecidos no desafio. Valida a identidade dos arquivos e aplica regras específicas conhecidas, sem API externa.
-- **Extração assistida por LLM:** usada para documentos textuais desconhecidos. O modelo propõe serviços, quantidades, fatores e associações de tarifas por meio de um schema estrito.
+- **Deterministic adapter:** handles the documents supplied with the exercise. It validates file identity and applies known, explicit rules without calling an external API.
+- **LLM-assisted extraction:** handles unfamiliar text-based documents. The model proposes services, quantities, factors, and rate associations through a strict schema.
 
-Quando `--extractor llm` é forçado sobre os documentos conhecidos, a LLM realmente é executada, mas
-sua saída funciona como uma proposta auditada. O JSON final continua sendo precificado pelo adaptador
-determinístico revisado. Isso evita que uma resposta plausível do modelo substitua silenciosamente regras
-como unidade por veículo, sobreposição de temporadas, direção da rota ou precedência de um e-mail.
+When `--extractor llm` is forced for the known exercise documents, the LLM is genuinely called, but its output remains an audited proposal. Final pricing still comes from the reviewed deterministic adapter. This prevents a plausible model response from silently overriding rules such as per-vehicle units, overlapping seasons, route direction, or email precedence.
 
-O LLM é usado somente onde existe ambiguidade semântica. Ele não calcula valores, subtotais ou totais e não decide se uma cotação pode ser enviada ao cliente. No caminho genérico, o QuoteTrace ainda:
+The LLM is used only for semantic ambiguity. It never calculates line amounts, subtotals, or totals, and it never decides whether a quotation is ready for a client. In the generic path, QuoteTrace still:
 
-- verifica se os trechos citados pelo modelo existem nos documentos locais;
-- tolera apenas diferenças de apresentação nas citações (pontuação, caixa, espaços e zeros decimais)
-  e grava no resultado o trecho literal recuperado do documento;
-- valida datas, moedas, quantidades e strings decimais;
-- calcula todos os valores localmente com `Decimal`;
-- classifica resultados extraídos por LLM no máximo como `conditional`;
-- interrompe o processamento quando uma evidência não pode ser comprovada.
+- verifies that model-cited excerpts exist in the local documents;
+- tolerates presentation-only differences in citations, such as punctuation, letter case, whitespace, and decimal trailing zeros, while preserving the literal local excerpt in the output;
+- validates dates, currencies, quantities, and decimal strings;
+- calculates every amount locally with `Decimal`;
+- limits LLM-extracted lines to `conditional` confidence at best;
+- stops processing when evidence cannot be verified.
 
-Essa separação é intencional: um cálculo pode ser matematicamente correto e ainda estar comercialmente errado se a tarifa ou a quantidade tiver sido extraída incorretamente.
+This boundary is deliberate: arithmetic can be correct while the commercial result is wrong because the model extracted the wrong rate or quantity.
 
-### Política de confiança
+### Confidence policy
 
-Cada linha de custo recebe uma classificação explícita:
+Every cost line receives one explicit classification:
 
-- `confirmed`: tarifa vigente, associação inequívoca e fórmula completa;
-- `conditional`: valor calculável, mas que ainda depende de validação operacional ou humana;
-- `indicative`: valor conhecido, porém fora da validade aplicável;
-- `unresolved`: não existe informação segura suficiente para calcular.
+- `confirmed`: current rate, unambiguous match, and complete formula;
+- `conditional`: calculable amount that still requires operational or human validation;
+- `indicative`: known amount whose rate is not valid for the applicable date;
+- `unresolved`: insufficient reliable information to calculate an amount.
 
-Os subtotais são separados por confiança. Linhas não resolvidas não entram nas somas e `client_ready_total` permanece `null` enquanto houver decisões pendentes. O sistema prefere não calcular a inventar uma certeza.
+Subtotals are separated by confidence. Unresolved lines are excluded from monetary sums, and `client_ready_total` remains `null` while commercial decisions are pending. The system prefers refusing to calculate over inventing certainty.
 
-### Decisões técnicas
+### Technical decisions
 
-- Python 3.11+ e poucas dependências externas.
-- Valores monetários representados por `Decimal`, nunca por `float`.
-- Arredondamento financeiro explícito em duas casas decimais.
-- Valores monetários serializados como strings no JSON.
-- Uma linha de saída para cada serviço operacional, inclusive itens gratuitos e não resolvidos.
-- Proveniência de quantidade e tarifa preservada por documento, página, seção e trecho.
-- Regras de precedência, validade e unidade mantidas fora do LLM.
-- Falha explícita para documentos vazios, evidências inventadas e formatos sem suporte.
+- Python 3.11 or later with a small dependency surface.
+- Monetary values represented with `Decimal`, never `float`.
+- Explicit financial rounding to two decimal places.
+- Monetary values serialized as decimal strings in JSON.
+- One output line for every operational service, including complimentary and unresolved items.
+- Quantity and rate provenance preserved by document, page, section, and excerpt.
+- Precedence, validity, and billing-unit rules kept outside the LLM.
+- Explicit failure for empty documents, fabricated evidence, and unsupported formats.
 
-## Como rodar
+## Running the project
 
-### Pré-requisitos
+### Requirements
 
-- Python 3.11 ou superior;
-- uma chave da API da OpenAI somente para documentos desconhecidos ou quando o modo LLM for forçado.
+- Python 3.11 or later;
+- an OpenAI API key only for unfamiliar documents or when LLM extraction is explicitly forced.
 
-### Instalação
+### Installation
 
-Na raiz do projeto:
+From the project root:
 
 ```bash
 python3 -m venv .venv
@@ -85,33 +81,33 @@ source .venv/bin/activate
 python -m pip install -e '.[test]'
 ```
 
-No Windows PowerShell, ative o ambiente com:
+On Windows PowerShell, activate the environment with:
 
 ```powershell
 .venv\Scripts\Activate.ps1
 ```
 
-### Configurar a chave da OpenAI
+### Configuring the OpenAI API key
 
-Copie o arquivo de exemplo na raiz do projeto:
+Copy the example environment file in the project root:
 
 ```bash
 cp .env.example .env
 ```
 
-Abra o novo arquivo `.env` e substitua o valor de exemplo:
+Open `.env` and replace the placeholder value:
 
 ```dotenv
-OPENAI_API_KEY=sk-sua-chave-aqui
+OPENAI_API_KEY=sk-your-key-here
 ```
 
-O QuoteTrace carrega esse arquivo automaticamente ao iniciar. Não é necessário executar `export` nem informar a chave em cada comando. O `.env` está ignorado pelo Git e não deve ser enviado, compartilhado ou incluído no arquivo ZIP da entrega.
+QuoteTrace loads this file automatically at startup. There is no need to run `export` or pass the key with each command. `.env` is ignored by Git and must not be committed, shared, or included in the submission archive.
 
-Uma variável `OPENAI_API_KEY` já definida no sistema tem precedência sobre o valor do `.env`. Os documentos originais continuam funcionando mesmo quando nenhum dos dois está configurado.
+An `OPENAI_API_KEY` already defined in the process environment takes precedence over the `.env` value. The supplied exercise documents continue to work when neither is configured.
 
-### Executar com os documentos do desafio
+### Running with the exercise documents
 
-Esse fluxo é totalmente local e não precisa de chave de API:
+This path is fully local and does not require an API key:
 
 ```bash
 python -m quote_trace \
@@ -119,61 +115,52 @@ python -m quote_trace \
   --output output/costed-quotation.json
 ```
 
-O resultado de referência já gerado está em [`output/costed-quotation.json`](output/costed-quotation.json).
+The generated reference result is available at [`output/costed-quotation.json`](output/costed-quotation.json).
 
-### Executar com outros documentos
+### Running with other documents
 
-O modo padrão é `auto`: ele usa o adaptador determinístico quando reconhece o conjunto do desafio e recorre ao LLM para outros conjuntos suportados.
+The default mode is `auto`: it selects the deterministic adapter for the recognized exercise set and falls back to the LLM extractor for other supported document sets.
 
 ```bash
 python -m quote_trace \
-  --input caminho/para/documentos \
+  --input path/to/documents \
   --output output/other-quotation.json
 ```
 
-São aceitos PDF com camada de texto, TXT, MD, EML e CSV. PDFs escaneados são rejeitados de forma explícita porque exigem uma etapa de OCR que não faz parte desta versão.
+Supported formats are text-layer PDFs, TXT, MD, EML, and CSV. Scanned PDFs fail explicitly because OCR is outside this version's scope.
 
-> O modo LLM envia o conteúdo textual dos documentos para a API da OpenAI. Ele só deve ser habilitado quando as políticas de privacidade e processamento de dados permitirem esse envio.
+> LLM mode sends the documents' textual content to the OpenAI API. Enable it only when applicable privacy and data-processing policies permit that transfer.
 
-### Selecionar o modo de extração
+### Selecting an extraction mode
 
 ```bash
-# Seleção automática — comportamento padrão
+# Automatic selection — the default behavior
 python -m quote_trace --input ../docs --output output/result.json --extractor auto
 
-# Proíbe qualquer chamada ao LLM
+# Prevent any LLM call
 python -m quote_trace --input ../docs --output output/result.json --extractor deterministic
 
-# Força a extração via LLM
-python -m quote_trace --input caminho/para/documentos --output output/result.json --extractor llm
+# Force LLM-assisted extraction
+python -m quote_trace --input path/to/documents --output output/result.json --extractor llm
 
-# Seleciona outro modelo para a extração
-python -m quote_trace --input caminho/para/documentos --output output/result.json --model gpt-5-mini
+# Select a different extraction model
+python -m quote_trace --input path/to/documents --output output/result.json --model gpt-5-mini
 
-# Aumenta o limite total para uma extração excepcionalmente demorada
-python -m quote_trace --input caminho/para/documentos --output output/result.json --extractor llm --timeout-seconds 900
+# Increase the overall limit for an exceptionally slow extraction
+python -m quote_trace --input path/to/documents --output output/result.json --extractor llm --timeout-seconds 900
 ```
 
-O modelo padrão é `gpt-5-mini`. A extração LLM é iniciada em background e consultada até terminar,
-com limite total padrão de 600 segundos. Isso evita manter uma única conexão HTTP aberta durante toda
-a geração. O programa não repete automaticamente a criação da resposta, pois uma repetição após uma
-falha de rede poderia gerar processamento e cobrança duplicados.
+The default model is `gpt-5-mini`. LLM extraction starts as a background response and is polled until completion, with a default overall limit of 600 seconds. This avoids holding one HTTP connection open throughout generation. The program does not automatically create a second response after a network failure because doing so could duplicate processing and charges.
 
-Ao forçar `--extractor llm` sobre a pasta original do desafio, somente a cotação operacional, o rate
-pack e o e-mail do fornecedor são enviados. Briefs e transcrições são documentação de contexto, não
-fontes comerciais, e por isso ficam fora da extração. Nesse caso, `extraction.mode` será
-`llm_assisted_deterministic`: a quantidade de linhas candidatas fica registrada em `extraction.audit`,
-mas tarifas, fatores e totais da LLM não entram no orçamento autoritativo. Se a proposta citar uma
-evidência inexistente ou falhar na validação local, ela será marcada como `rejected` na auditoria sem
-impedir que o adaptador conhecido produza o orçamento determinístico.
+When `--extractor llm` is forced for the original exercise directory, only the operational quotation, rate pack, and supplier email are sent. Briefs and transcripts provide development context rather than commercial evidence, so they are excluded. In this case, `extraction.mode` is `llm_assisted_deterministic`: the candidate line count is recorded under `extraction.audit`, but LLM-proposed rates, factors, and totals never enter the authoritative quotation. If the proposal cites nonexistent evidence or fails local validation, its audit status becomes `rejected` without preventing the known adapter from producing the deterministic quotation.
 
-### Executar os testes
+### Running the tests
 
 ```bash
 python -m pytest
 ```
 
-Para reproduzir toda a validação de aceite:
+Run the complete acceptance sequence with:
 
 ```bash
 python -m pytest
@@ -181,58 +168,55 @@ python -m quote_trace --input ../docs --output output/costed-quotation.json
 python -m json.tool output/costed-quotation.json >/dev/null
 ```
 
-Os testes cobrem precedência do e-mail do fornecedor, semântica de unidades, inclusões gratuitas, temporadas sobrepostas, tarifas vencidas, incompatibilidades de rota, ausência de preços, proveniência e reconciliação exata dos subtotais. O caminho LLM é testado com uma fronteira HTTP simulada, sem consumir chamadas externas.
+The test suite covers supplier-email precedence, billing-unit semantics, complimentary services, overlapping seasons, expired rates, route mismatches, missing prices, provenance, and exact subtotal reconciliation. The LLM boundary is tested through a simulated HTTP client and consumes no external API calls.
 
-### Interpretar a saída
+### Interpreting the output
 
-O JSON possui quatro áreas principais:
+The JSON has four primary areas:
 
-- `cost_lines`: serviços, quantidades, tarifas, fórmulas, valores e proveniência;
-- `totals`: subtotais separados por confiança e o bloqueio do total final;
-- `needs_review`: problemas encontrados, impacto e ação humana necessária;
-- `extraction`: metadados do extrator, presentes no caminho LLM.
+- `cost_lines`: services, quantities, rates, formulas, amounts, and provenance;
+- `totals`: confidence-partitioned subtotals and the final-total gate;
+- `needs_review`: detected issues, their impact, and required human action;
+- `extraction`: extractor metadata, present on the LLM path.
 
-`known_amounts_total_not_client_ready` serve apenas para reconciliação interna. Ele não representa um total aprovado para o cliente.
+`known_amounts_total_not_client_ready` exists only for internal reconciliation. It is not an approved client total.
 
-No schema genérico (`1.2`), `currency` no topo recebe a única moeda efetivamente precificada. Uma linha
-sem tarifa ou moeda é contabilizada em `totals.unresolved_without_currency`; ela não cria uma moeda
-fictícia `UNKNOWN` nem faz `currency` virar `null`. O valor `null` permanece correto quando não existe
-nenhuma moeda precificada ou quando há mais de uma moeda real no orçamento.
+In the generic schema (`1.2`), the top-level `currency` contains the single currency used by priced lines. An unpriced line without a currency increments `totals.unresolved_without_currency`; it neither creates a fictional `UNKNOWN` currency nor forces `currency` to `null`. A `null` value remains correct when no line has a price or when the quotation contains more than one real currency.
 
-## Como o projeto está estruturado
+## Project structure
 
 ```text
 quote-trace/
 ├── src/quote_trace/
-│   ├── __main__.py          # CLI, argumentos e seleção do extrator
-│   ├── documents.py         # Leitura e validação do conjunto conhecido
-│   ├── llm_extractor.py     # Extração genérica, schema e validações de evidência
-│   ├── models.py            # Modelos, confiança e utilitários monetários
-│   └── pipeline.py          # Regras comerciais e composição da cotação
+│   ├── __main__.py          # CLI arguments and extractor selection
+│   ├── documents.py         # Known-set reading and validation
+│   ├── llm_extractor.py     # Generic extraction, schema, and evidence validation
+│   ├── models.py            # Domain models, confidence, and money utilities
+│   └── pipeline.py          # Commercial rules and quotation assembly
 ├── tests/
 │   ├── fixtures/
 │   │   └── golden-summary.json
-│   └── test_pipeline.py     # Testes determinísticos e da fronteira LLM
+│   └── test_pipeline.py     # Deterministic pipeline and LLM-boundary tests
 ├── output/
 │   └── costed-quotation.json
-├── .env.example             # Modelo seguro para configuração da API
-├── NOTE.md                  # Nota técnica do desafio
-├── RECORDING.md             # Roteiro sugerido para apresentação
-└── pyproject.toml           # Pacote, dependências e configuração de testes
+├── .env.example             # Safe API configuration template
+├── NOTE.md                  # Technical submission note
+├── RECORDING.md             # Suggested presentation script
+└── pyproject.toml           # Package, dependencies, and test configuration
 ```
 
-### Responsabilidades dos módulos
+### Module responsibilities
 
-`documents.py` conhece apenas o formato fornecido no desafio. Ele garante que os arquivos esperados existem, extrai o texto dos PDFs e valida marcadores mínimos de identidade antes que qualquer regra comercial seja executada.
+`documents.py` understands only the format supplied with the exercise. It ensures that expected files exist, extracts PDF text, and validates minimum identity markers before any commercial rule executes.
 
-`llm_extractor.py` é a fronteira probabilística. Ele lê formatos textuais suportados, solicita uma saída estruturada à API, verifica as evidências retornadas e converte a proposta em linhas sempre sujeitas a revisão. Para o conjunto conhecido, delega a precificação final ao adaptador determinístico e registra a proposta apenas como auditoria. A função de requisição é injetável para permitir testes sem rede.
+`llm_extractor.py` is the probabilistic boundary. It reads supported textual formats, requests schema-constrained output from the API, verifies returned evidence, and converts the proposal into lines that always require review. For the known document set, it delegates final pricing to the deterministic adapter and records the proposal only as audit data. Its request function is injectable so tests do not require network access.
 
-`models.py` concentra os contratos do domínio e a política monetária. `pipeline.py` contém as regras determinísticas específicas do desafio, incluindo precedência de tarifas, unidades de cobrança, validade e classificação de confiança.
+`models.py` owns domain contracts and monetary policy. `pipeline.py` owns the exercise-specific deterministic rules, including rate precedence, billing units, validity, and confidence classification.
 
-`__main__.py` mantém a interface fina: interpreta argumentos, escolhe o extrator, grava o JSON somente após uma execução bem-sucedida e retorna erro legível quando a entrada não pode ser processada com segurança.
+`__main__.py` keeps the interface thin: it parses arguments, selects the extractor, writes JSON only after successful processing, and returns readable errors when input cannot be handled safely.
 
-### Limites conhecidos
+### Known limitations
 
-Esta versão não é um parser universal. Não há OCR, processamento de imagens, suporte a planilhas ou integração com sistemas de reserva. Documentos muito grandes também exigiriam segmentação e reconciliação entre partes antes de serem enviados a um modelo.
+This version is not a universal document parser. It does not provide OCR, image processing, spreadsheet ingestion, or booking-system integration. Very large documents would also require chunking and cross-chunk reconciliation before being sent to a model.
 
-Em uma evolução para produção, os próximos passos seriam OCR com preservação de coordenadas, schemas versionados por fornecedor, validação cruzada de entidades, observabilidade sem exposição de dados sensíveis e um workflow auditável para aprovação humana das linhas condicionais.
+A production evolution should add coordinate-preserving OCR, versioned supplier schemas, cross-entity validation, observability without sensitive-data exposure, and an auditable workflow for approving conditional lines.
