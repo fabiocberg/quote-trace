@@ -1,0 +1,1185 @@
+{
+  "schema_version": "1.0",
+  "quotation_reference": "MRA-2027-0641",
+  "currency": "USD",
+  "pricing_policy": "Only deterministic, source-backed calculations are included. Candidate amounts and unresolved lines are excluded from subtotals.",
+  "cost_lines": [
+    {
+      "service": {
+        "id": "cpt_meet_arrival",
+        "date": "2027-07-05",
+        "category": "meet_and_greet",
+        "description": "Cape Town arrival assistance",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 1,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "One Way Assistance"
+        },
+        "operational_quantity": "5 travellers × 1 movement"
+      },
+      "pricing_quantity": "5 people × 1 movement",
+      "unit_rate": "45.00",
+      "currency": "USD",
+      "rate_unit": "per person per movement",
+      "line_total": "225.00",
+      "formula": "5 people × 1 movement × USD 45.00 = USD 225.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Current rate and booked service match unambiguously.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 1,
+          "section": "2. CAPE TOWN — TOURING & TRANSFERS",
+          "excerpt": "One Way Assistance (Meet & Greet)"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "cpt_transfer_in",
+        "date": "2027-07-05",
+        "category": "road_transfer",
+        "description": "CPT to Camissa, guided daytime transfer",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 1,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Pick up: CPT\nDrop off: The Camissa Boutique Hotel"
+        },
+        "operational_quantity": "1 vehicle one way"
+      },
+      "pricing_quantity": "1 vehicle",
+      "unit_rate": "210.00",
+      "currency": "USD",
+      "rate_unit": "per vehicle one way",
+      "line_total": "210.00",
+      "formula": "1 vehicle × USD 210.00 = USD 210.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Current rate and booked service match unambiguously.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 1,
+          "section": "2. CAPE TOWN — TOURING & TRANSFERS",
+          "excerpt": "Transfer CIA to Zone 1, 06H00–21H00, with guide"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "cpt_trailer_in",
+        "date": "2027-07-05",
+        "category": "supplement",
+        "description": "Trailer supplement, inbound",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 1,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Included: 1 x Trailer 6+ Pax per group"
+        },
+        "operational_quantity": "1 group"
+      },
+      "pricing_quantity": "1 group",
+      "unit_rate": "65.00",
+      "currency": "USD",
+      "rate_unit": "per group per transfer",
+      "line_total": "65.00",
+      "formula": "1 group × USD 65.00 = USD 65.00",
+      "confidence": "conditional",
+      "confidence_reason": "Booked explicitly, but the normal threshold is 6+ passengers; five are travelling. Excess luggage may still justify it.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 1,
+          "section": "2a. Trailer supplement",
+          "excerpt": "Trailer supplement, required for groups of 6 pax and above"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "camissa_family",
+        "date": "2027-07-05",
+        "category": "accommodation",
+        "description": "Camissa Family Suite, B&B",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 1,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "1 x Family Suite on a Bed and Breakfast basis"
+        },
+        "operational_quantity": "1 room × 4 nights"
+      },
+      "pricing_quantity": "1 room × 4 nights",
+      "unit_rate": "375.00",
+      "currency": "USD",
+      "rate_unit": "per room per night",
+      "line_total": "1500.00",
+      "formula": "1 room × 4 nights × USD 375.00 = USD 1500.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Supplier email explicitly supersedes the rate pack for all 2027 arrivals.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-email-Camissa-2027-rates.txt",
+          "page": null,
+          "section": "Corrected 2027 rates",
+          "excerpt": "Family Suite (B&B)        USD 375.00 per room per night"
+        },
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 1,
+          "section": "1. CAPE TOWN — ACCOMMODATION",
+          "excerpt": "Family Suite\nBed & Breakfast\n340.00"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "camissa_classic",
+        "date": "2027-07-05",
+        "category": "accommodation",
+        "description": "Camissa Classic Room, B&B",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 1,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "1 x Classic Room on a Bed and Breakfast basis"
+        },
+        "operational_quantity": "1 room × 4 nights"
+      },
+      "pricing_quantity": "1 room × 4 nights",
+      "unit_rate": "230.00",
+      "currency": "USD",
+      "rate_unit": "per room per night",
+      "line_total": "920.00",
+      "formula": "1 room × 4 nights × USD 230.00 = USD 920.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Supplier email explicitly supersedes the rate pack for all 2027 arrivals.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-email-Camissa-2027-rates.txt",
+          "page": null,
+          "section": "Corrected 2027 rates",
+          "excerpt": "Classic Room (B&B)        USD 230.00 per room per night"
+        },
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 1,
+          "section": "1. CAPE TOWN — ACCOMMODATION",
+          "excerpt": "Classic Room\nBed & Breakfast\n210.00"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "table_mountain",
+        "date": "2027-07-06",
+        "category": "activity",
+        "description": "Rise & Climb Table Mountain hike",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 1,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Half Day Rise & Climb - Table Mountain Hike"
+        },
+        "operational_quantity": "5 people"
+      },
+      "pricing_quantity": "5 people",
+      "unit_rate": "95.00",
+      "currency": "USD",
+      "rate_unit": "per person",
+      "line_total": "475.00",
+      "formula": "5 people × USD 95.00 = USD 475.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Current rate and booked service match unambiguously.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 1,
+          "section": "2. CAPE TOWN — TOURING & TRANSFERS",
+          "excerpt": "SLOW Walks & Hikes — Rise & Climb, Table Mountain"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "peninsula",
+        "date": "2027-07-07",
+        "category": "activity",
+        "description": "Private Full Day Peninsula Scenic Tour",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 1,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Full Day Peninsula Scenic Tour"
+        },
+        "operational_quantity": "1 vehicle"
+      },
+      "pricing_quantity": "1 vehicle",
+      "unit_rate": "480.00",
+      "currency": "USD",
+      "rate_unit": "per vehicle",
+      "line_total": "480.00",
+      "formula": "1 vehicle × USD 480.00 = USD 480.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Current rate and booked service match unambiguously.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 1,
+          "section": "2. CAPE TOWN — TOURING & TRANSFERS",
+          "excerpt": "Full Day Peninsula Scenic Tour, private"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "custom_tour",
+        "date": "2027-07-08",
+        "category": "activity",
+        "description": "Custom Private Tour",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 1,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Custom Private Tour"
+        },
+        "operational_quantity": "5 people"
+      },
+      "pricing_quantity": "5 people",
+      "unit_rate": "145.00",
+      "currency": "USD",
+      "rate_unit": "per person",
+      "line_total": "725.00",
+      "formula": "5 people × USD 145.00 = USD 725.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Current rate and booked service match unambiguously.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 1,
+          "section": "2. CAPE TOWN — TOURING & TRANSFERS",
+          "excerpt": "Custom Private Tour, full day"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "custom_extra",
+        "date": "2027-07-08",
+        "category": "supplement",
+        "description": "Custom tour per-group extra",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Included: 1 x Per Group Extra per group"
+        },
+        "operational_quantity": "1 group"
+      },
+      "pricing_quantity": "1 group",
+      "unit_rate": "140.00",
+      "currency": "USD",
+      "rate_unit": "per group",
+      "line_total": "140.00",
+      "formula": "1 group × USD 140.00 = USD 140.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Current rate and booked service match unambiguously.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 1,
+          "section": "2b. Custom Private Tour",
+          "excerpt": "Per Group Extra of 140.00 per group"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "cpt_transfer_out",
+        "date": "2027-07-09",
+        "category": "road_transfer",
+        "description": "Camissa to CPT, guided daytime transfer",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Pick up: The Camissa Boutique Hotel\nDrop off: CPT"
+        },
+        "operational_quantity": "1 vehicle one way"
+      },
+      "pricing_quantity": "1 vehicle",
+      "unit_rate": "210.00",
+      "currency": "USD",
+      "rate_unit": "per vehicle one way",
+      "line_total": "210.00",
+      "formula": "1 vehicle × USD 210.00 = USD 210.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Current rate and booked service match unambiguously.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 1,
+          "section": "2. CAPE TOWN — TOURING & TRANSFERS",
+          "excerpt": "Transfer CIA to Zone 1, 06H00–21H00, with guide"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "cpt_trailer_out",
+        "date": "2027-07-09",
+        "category": "supplement",
+        "description": "Trailer supplement, outbound",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Included: 1 x Trailer 6+ Pax per group"
+        },
+        "operational_quantity": "1 group"
+      },
+      "pricing_quantity": "1 group",
+      "unit_rate": "65.00",
+      "currency": "USD",
+      "rate_unit": "per group per transfer",
+      "line_total": "65.00",
+      "formula": "1 group × USD 65.00 = USD 65.00",
+      "confidence": "conditional",
+      "confidence_reason": "Booked explicitly, but the normal threshold is 6+ passengers; five are travelling. Excess luggage may still justify it.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 1,
+          "section": "2a. Trailer supplement",
+          "excerpt": "Trailer supplement, required for groups of 6 pax and above"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "flight_cpt_hds",
+        "date": "2027-07-09",
+        "category": "flight",
+        "description": "Zambezi Air CPT to HDS",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Arrival: 4Z, Hoedspruit"
+        },
+        "operational_quantity": "5 people"
+      },
+      "pricing_quantity": null,
+      "unit_rate": null,
+      "currency": null,
+      "rate_unit": null,
+      "line_total": null,
+      "formula": null,
+      "confidence": "unresolved",
+      "confidence_reason": "Scheduled air must be quoted live; the rate pack forbids carrying forward fares.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 3,
+          "section": "8. AIR — SCHEDULED AND CHARTER",
+          "excerpt": "Airfares are not carried in this pack"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "hds_marula",
+        "date": "2027-07-09",
+        "category": "road_transfer",
+        "description": "Scheduled HDS to Marula transfer",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Complimentary scheduled transfer"
+        },
+        "operational_quantity": "5 guests, stay of 2 nights"
+      },
+      "pricing_quantity": "1 included transfer",
+      "unit_rate": "0.00",
+      "currency": "USD",
+      "rate_unit": "included",
+      "line_total": "0.00",
+      "formula": "1 included transfer × USD 0.00 = USD 0.00",
+      "confidence": "confirmed",
+      "confidence_reason": "The scheduled transfer is complimentary for stays of two nights or more; this stay is two nights.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "3. MARULA RESERVE",
+          "excerpt": "Complimentary scheduled road transfer from Hoedspruit Airport (HDS)"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "marula_family",
+        "date": "2027-07-09",
+        "category": "accommodation",
+        "description": "Marula Family Chalet, fully inclusive",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Family Chalet on a Fully Inclusive"
+        },
+        "operational_quantity": "1 chalet × 2 nights"
+      },
+      "pricing_quantity": null,
+      "unit_rate": null,
+      "currency": null,
+      "rate_unit": null,
+      "line_total": null,
+      "formula": null,
+      "confidence": "unresolved",
+      "confidence_reason": "The 9 July boundary appears in both Green and Peak seasons, and the pack does not define boundary or stay-spanning policy.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "3. MARULA RESERVE",
+          "excerpt": "01 Apr 27 – 09 Jul 27"
+        },
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "3. MARULA RESERVE",
+          "excerpt": "Family Chalet\n620.00\n890.00"
+        }
+      ],
+      "candidate_amounts": [
+        {
+          "scenario": "arrival-date rule selects Green for both nights",
+          "unit_rate": "620.00",
+          "line_total": "1240.00",
+          "unit": "per chalet per night"
+        },
+        {
+          "scenario": "nightly split: 9 Jul Green, 10 Jul Peak",
+          "unit_rate": "mixed",
+          "line_total": "1510.00",
+          "unit": "per chalet per night"
+        },
+        {
+          "scenario": "Peak applies from 9 Jul",
+          "unit_rate": "890.00",
+          "line_total": "1780.00",
+          "unit": "per chalet per night"
+        }
+      ]
+    },
+    {
+      "service": {
+        "id": "marula_pool",
+        "date": "2027-07-09",
+        "category": "accommodation",
+        "description": "Marula Tented Pool Suite, fully inclusive",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Tented Pool Suite on a Fully Inclusive"
+        },
+        "operational_quantity": "1 suite × 2 nights"
+      },
+      "pricing_quantity": null,
+      "unit_rate": null,
+      "currency": null,
+      "rate_unit": null,
+      "line_total": null,
+      "formula": null,
+      "confidence": "unresolved",
+      "confidence_reason": "The 9 July boundary appears in both Green and Peak seasons, and the pack does not define boundary or stay-spanning policy.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "3. MARULA RESERVE",
+          "excerpt": "01 Apr 27 – 09 Jul 27"
+        },
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "3. MARULA RESERVE",
+          "excerpt": "Tented Pool Suite\n540.00\n760.00"
+        }
+      ],
+      "candidate_amounts": [
+        {
+          "scenario": "arrival-date rule selects Green for both nights",
+          "unit_rate": "540.00",
+          "line_total": "1080.00",
+          "unit": "per suite per night"
+        },
+        {
+          "scenario": "nightly split: 9 Jul Green, 10 Jul Peak",
+          "unit_rate": "mixed",
+          "line_total": "1300.00",
+          "unit": "per suite per night"
+        },
+        {
+          "scenario": "Peak applies from 9 Jul",
+          "unit_rate": "760.00",
+          "line_total": "1520.00",
+          "unit": "per suite per night"
+        }
+      ]
+    },
+    {
+      "service": {
+        "id": "marula_levy",
+        "date": "2027-07-09",
+        "category": "levy",
+        "description": "Marula conservation levy",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Included: 2 x Consv Levy compulsory pax"
+        },
+        "operational_quantity": "5 people × 2 nights"
+      },
+      "pricing_quantity": "5 people × 2 nights",
+      "unit_rate": "28.00",
+      "currency": "USD",
+      "rate_unit": "per person per night",
+      "line_total": "280.00",
+      "formula": "5 people × 2 nights × USD 28.00 = USD 280.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Current rate and booked service match unambiguously.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "3. MARULA RESERVE",
+          "excerpt": "Marula Reserve Conservation Levy: 28.00 per person per night"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "marula_kudu",
+        "date": "2027-07-11",
+        "category": "road_transfer",
+        "description": "Marula River Lodge to Kudu Ridge",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Pick up: Marula River Lodge\nDrop off: Kudu Ridge Private Game Reserve"
+        },
+        "operational_quantity": "5 people one way"
+      },
+      "pricing_quantity": null,
+      "unit_rate": null,
+      "currency": null,
+      "rate_unit": null,
+      "line_total": null,
+      "formula": null,
+      "confidence": "unresolved",
+      "confidence_reason": "The booked label says HDS to Kudu, but pickup is Marula River Lodge. No rate for Marula-to-Kudu is supplied.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "5. LOWVELD — ROAD TRANSFERS",
+          "excerpt": "HDS to Kudu Sands lodges"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "kudu_gate_in",
+        "date": "2027-07-11",
+        "category": "entrance_fee",
+        "description": "Vehicle entrance fee on arrival at Kudu",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Included: 1 x Vehicle Entrance Fee per group"
+        },
+        "operational_quantity": "1 group per entry"
+      },
+      "pricing_quantity": "1 group × 1 entry",
+      "unit_rate": "40.00",
+      "currency": "USD",
+      "rate_unit": "per group per entry",
+      "line_total": "40.00",
+      "formula": "1 group × 1 entry × USD 40.00 = USD 40.00",
+      "confidence": "conditional",
+      "confidence_reason": "The fee is published, but applicability depends on the gate used and must be confirmed.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "5. LOWVELD — ROAD TRANSFERS",
+          "excerpt": "Vehicle Entrance Fee 40.00 per group per entry"
+        },
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "5. LOWVELD — ROAD TRANSFERS",
+          "excerpt": "depends on the gate used on the day"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "kudu_suite",
+        "date": "2027-07-11",
+        "category": "accommodation",
+        "description": "Kudu Ridge Luxury Suites, fully inclusive",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "2 x Luxury Suite on a Fully Inclusive"
+        },
+        "operational_quantity": "5 people × 3 nights"
+      },
+      "pricing_quantity": "5 people × 3 nights",
+      "unit_rate": "890.00",
+      "currency": "USD",
+      "rate_unit": "per person sharing per night",
+      "line_total": "13350.00",
+      "formula": "5 people × 3 nights × USD 890.00 = USD 13350.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Rate is per person sharing; the triple note charges the fifth guest at the standard sharing rate.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "4. KUDU SANDS",
+          "excerpt": "Luxury Suite\n890.00\nper person sharing per night"
+        },
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "4a. Triple occupancy",
+          "excerpt": "No supplement and no reduction applies"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "kudu_levy",
+        "date": "2027-07-11",
+        "category": "levy",
+        "description": "Kudu conservation levy",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Included: 3 x Conservation Levy compulsory pax"
+        },
+        "operational_quantity": "5 people × 3 nights"
+      },
+      "pricing_quantity": "5 people × 3 nights",
+      "unit_rate": "35.00",
+      "currency": "USD",
+      "rate_unit": "per person per night",
+      "line_total": "525.00",
+      "formula": "5 people × 3 nights × USD 35.00 = USD 525.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Current rate and booked service match unambiguously.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "4. KUDU SANDS",
+          "excerpt": "Kudu Sands Conservation Levy: 35.00 per person per night"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "kudu_triple",
+        "date": "2027-07-11",
+        "category": "occupancy",
+        "description": "Luxury Suite triple occupancy",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Included: 1 x Triple per group"
+        },
+        "operational_quantity": "1 triple arrangement"
+      },
+      "pricing_quantity": "1 triple arrangement",
+      "unit_rate": "0.00",
+      "currency": "USD",
+      "rate_unit": "no supplement",
+      "line_total": "0.00",
+      "formula": "1 triple arrangement × USD 0.00 = USD 0.00",
+      "confidence": "confirmed",
+      "confidence_reason": "The rate pack explicitly states no supplement and no reduction for triple occupancy.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "4a. Triple occupancy",
+          "excerpt": "No supplement and no reduction applies"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "kudu_mqp",
+        "date": "2027-07-14",
+        "category": "road_transfer",
+        "description": "Kudu Ridge to MQP",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Pick up: Kudu Ridge Private Game Reserve\nDrop off: MQP"
+        },
+        "operational_quantity": "5 people one way"
+      },
+      "pricing_quantity": "5 people",
+      "unit_rate": "190.00",
+      "currency": "USD",
+      "rate_unit": "per person one way",
+      "line_total": "950.00",
+      "formula": "5 people × USD 190.00 = USD 950.00",
+      "confidence": "conditional",
+      "confidence_reason": "Pickup/drop-off match Kudu-to-MQP, but the operational service title describes the reverse direction.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "5. LOWVELD — ROAD TRANSFERS",
+          "excerpt": "Kudu Sands lodges to MQP (Kruger Mpumalanga)"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "kudu_gate_pax",
+        "date": "2027-07-14",
+        "category": "entrance_fee",
+        "description": "Passenger entrance fee at Kudu departure",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Included: 1 x Entrance Fee per pax"
+        },
+        "operational_quantity": "5 people per entry"
+      },
+      "pricing_quantity": "5 people × 1 entry",
+      "unit_rate": "25.00",
+      "currency": "USD",
+      "rate_unit": "per person per entry",
+      "line_total": "125.00",
+      "formula": "5 people × 1 entry × USD 25.00 = USD 125.00",
+      "confidence": "conditional",
+      "confidence_reason": "The fee is published, but applicability depends on the gate used and must be confirmed.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "5. LOWVELD — ROAD TRANSFERS",
+          "excerpt": "Entrance Fee 25.00 per pax per entry"
+        },
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "5. LOWVELD — ROAD TRANSFERS",
+          "excerpt": "depends on the gate used on the day"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "kudu_gate_vehicle",
+        "date": "2027-07-14",
+        "category": "entrance_fee",
+        "description": "Vehicle entrance fee at Kudu departure",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 2,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Included: 1 x Vehicle Entrance Fee per group"
+        },
+        "operational_quantity": "1 group per entry"
+      },
+      "pricing_quantity": "1 group × 1 entry",
+      "unit_rate": "40.00",
+      "currency": "USD",
+      "rate_unit": "per group per entry",
+      "line_total": "40.00",
+      "formula": "1 group × 1 entry × USD 40.00 = USD 40.00",
+      "confidence": "conditional",
+      "confidence_reason": "The fee is published, but applicability depends on the gate used and must be confirmed.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "5. LOWVELD — ROAD TRANSFERS",
+          "excerpt": "Vehicle Entrance Fee 40.00 per group per entry"
+        },
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 2,
+          "section": "5. LOWVELD — ROAD TRANSFERS",
+          "excerpt": "depends on the gate used on the day"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "flight_mqp_vnx",
+        "date": "2027-07-14",
+        "category": "flight",
+        "description": "Zambezi Air MQP to VNX",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 3,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Arrival: 4Z, Vilancoulos"
+        },
+        "operational_quantity": "5 people"
+      },
+      "pricing_quantity": null,
+      "unit_rate": null,
+      "currency": null,
+      "rate_unit": null,
+      "line_total": null,
+      "formula": null,
+      "confidence": "unresolved",
+      "confidence_reason": "Scheduled air must be quoted live; the rate pack forbids carrying forward fares.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 3,
+          "section": "8. AIR — SCHEDULED AND CHARTER",
+          "excerpt": "Airfares are not carried in this pack"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "heli_out",
+        "date": "2027-07-14",
+        "category": "air_transfer",
+        "description": "VNX to Ilha Azul helicopter transfer",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 3,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Pick up: VNX\nDrop off: Ilha Azul Beach Lodge"
+        },
+        "operational_quantity": "5 people × 1 way"
+      },
+      "pricing_quantity": "5 people × 1 way",
+      "unit_rate": "395.00",
+      "currency": "USD",
+      "rate_unit": "per person per way",
+      "line_total": "1975.00",
+      "formula": "5 people × 1 way × USD 395.00 = USD 1975.00",
+      "confidence": "indicative",
+      "confidence_reason": "The only tariff expired on 31 December 2026 and is explicitly carried forward pending 2027 confirmation.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 3,
+          "section": "7. MOZAMBIQUE — AIR & SEA TRANSFERS",
+          "excerpt": "Helicopter transfer VNX (Vilanculos) – Benguerra island lodges"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "ilha_beach",
+        "date": "2027-07-14",
+        "category": "accommodation",
+        "description": "Ilha Azul Beach Villa, fully inclusive",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 3,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "1 x Beach Villa & 1 x Beach Villa Grande"
+        },
+        "operational_quantity": "1 villa × 3 nights"
+      },
+      "pricing_quantity": "1 villa × 3 nights",
+      "unit_rate": "780.00",
+      "currency": "USD",
+      "rate_unit": "per villa per night",
+      "line_total": "2340.00",
+      "formula": "1 villa × 3 nights × USD 780.00 = USD 2340.00",
+      "confidence": "confirmed",
+      "confidence_reason": "Current rate and booked service match unambiguously.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 3,
+          "section": "6. MOZAMBIQUE",
+          "excerpt": "Beach Villa\n780.00\nper villa per night"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "ilha_grande",
+        "date": "2027-07-14",
+        "category": "accommodation",
+        "description": "Ilha Azul Beach Villa Grande, fully inclusive",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 3,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "1 x Beach Villa & 1 x Beach Villa Grande"
+        },
+        "operational_quantity": "1 villa × 3 nights"
+      },
+      "pricing_quantity": null,
+      "unit_rate": null,
+      "currency": null,
+      "rate_unit": null,
+      "line_total": null,
+      "formula": null,
+      "confidence": "unresolved",
+      "confidence_reason": "Beach Villa Grande is not listed. It must not be assumed to mean Infinity Beach Villa.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 3,
+          "section": "6. MOZAMBIQUE",
+          "excerpt": "Infinity Beach Villa"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "heli_back",
+        "date": "2027-07-17",
+        "category": "air_transfer",
+        "description": "Ilha Azul to VNX helicopter transfer",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 3,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Pick up: Ilha Azul Beach Lodge\nDrop off: VNX"
+        },
+        "operational_quantity": "5 people × 1 way"
+      },
+      "pricing_quantity": "5 people × 1 way",
+      "unit_rate": "395.00",
+      "currency": "USD",
+      "rate_unit": "per person per way",
+      "line_total": "1975.00",
+      "formula": "5 people × 1 way × USD 395.00 = USD 1975.00",
+      "confidence": "indicative",
+      "confidence_reason": "The only tariff expired on 31 December 2026 and is explicitly carried forward pending 2027 confirmation.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 3,
+          "section": "7. MOZAMBIQUE — AIR & SEA TRANSFERS",
+          "excerpt": "Helicopter transfer VNX (Vilanculos) – Benguerra island lodges"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "flight_vnx_jnb",
+        "date": "2027-07-17",
+        "category": "flight",
+        "description": "Zambezi Air VNX to JNB",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 3,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "Arrival: 4Z, Johannesburg"
+        },
+        "operational_quantity": "5 people"
+      },
+      "pricing_quantity": null,
+      "unit_rate": null,
+      "currency": null,
+      "rate_unit": null,
+      "line_total": null,
+      "formula": null,
+      "confidence": "unresolved",
+      "confidence_reason": "Scheduled air must be quoted live; the rate pack forbids carrying forward fares.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 3,
+          "section": "8. AIR — SCHEDULED AND CHARTER",
+          "excerpt": "Airfares are not carried in this pack"
+        }
+      ],
+      "candidate_amounts": []
+    },
+    {
+      "service": {
+        "id": "jnb_meet_departure",
+        "date": "2027-07-17",
+        "category": "meet_and_greet",
+        "description": "Johannesburg departure assistance",
+        "source": {
+          "document": "MRA-2027-0641-Halloran-operational-quotation.pdf",
+          "page": 3,
+          "section": "TRAVEL ARRANGEMENTS",
+          "excerpt": "One Way Assistance"
+        },
+        "operational_quantity": "5 travellers × 1 movement"
+      },
+      "pricing_quantity": null,
+      "unit_rate": null,
+      "currency": null,
+      "rate_unit": null,
+      "line_total": null,
+      "formula": null,
+      "confidence": "unresolved",
+      "confidence_reason": "The supplied assistance rate is in the Cape Town section; there is no Johannesburg rate.",
+      "rate_provenance": [
+        {
+          "document": "Supplier-Rate-Pack-SA-2027-v3.pdf",
+          "page": 1,
+          "section": "2. CAPE TOWN — TOURING & TRANSFERS",
+          "excerpt": "One Way Assistance (Meet & Greet)"
+        }
+      ],
+      "candidate_amounts": []
+    }
+  ],
+  "totals": {
+    "confirmed_subtotal": "21380.00",
+    "conditional_subtotal": "1285.00",
+    "indicative_subtotal": "3950.00",
+    "known_amounts_total_not_client_ready": "26615.00",
+    "unresolved_lines": 8,
+    "client_ready_total": null,
+    "statement": "No final client-ready total exists until every needs_review item affecting price or applicability is resolved."
+  },
+  "needs_review": [
+    {
+      "id": "review-trailers",
+      "service_ids": [
+        "cpt_trailer_in",
+        "cpt_trailer_out"
+      ],
+      "issue": "Trailer booked for five passengers although the normal threshold is six.",
+      "impact": "USD 130.00 is conditional.",
+      "required_action": "Confirm excess-luggage requirement or remove both supplements."
+    },
+    {
+      "id": "review-marula-season",
+      "service_ids": [
+        "marula_family",
+        "marula_pool"
+      ],
+      "issue": "Green and Peak validity overlap on check-in date 9 July.",
+      "impact": "Both Marula room costs are excluded from totals.",
+      "required_action": "Obtain the supplier's boundary and stay-spanning rule, then select the applicable candidate."
+    },
+    {
+      "id": "review-marula-kudu-route",
+      "service_ids": [
+        "marula_kudu"
+      ],
+      "issue": "Service label and actual pickup describe different origins.",
+      "impact": "No transfer price is included.",
+      "required_action": "Re-quote the actual Marula River Lodge-to-Kudu Ridge routing."
+    },
+    {
+      "id": "review-gates",
+      "service_ids": [
+        "kudu_gate_in",
+        "kudu_gate_pax",
+        "kudu_gate_vehicle"
+      ],
+      "issue": "Gate charges depend on the gate used.",
+      "impact": "USD 205.00 is conditional.",
+      "required_action": "Confirm the planned gates and which of the three booked fees apply."
+    },
+    {
+      "id": "review-kudu-direction",
+      "service_ids": [
+        "kudu_mqp"
+      ],
+      "issue": "Service title is KMIA-to-Kudu while pickup/drop-off are Kudu-to-MQP.",
+      "impact": "USD 950.00 is conditional.",
+      "required_action": "Correct the operational title and confirm direction with the transfer operator."
+    },
+    {
+      "id": "review-helicopters",
+      "service_ids": [
+        "heli_out",
+        "heli_back"
+      ],
+      "issue": "Only a tariff ending in 2026 is available and a 2027 increase is expected.",
+      "impact": "USD 3,950.00 is indicative.",
+      "required_action": "Obtain and apply the confirmed 2027 helicopter rate."
+    },
+    {
+      "id": "review-villa-grande",
+      "service_ids": [
+        "ilha_grande"
+      ],
+      "issue": "Beach Villa Grande has no matching contracted room type.",
+      "impact": "One villa for three nights is unpriced.",
+      "required_action": "Confirm the booked room type and obtain its exact rate; do not assume Infinity Beach Villa."
+    },
+    {
+      "id": "review-flights",
+      "service_ids": [
+        "flight_cpt_hds",
+        "flight_mqp_vnx",
+        "flight_vnx_jnb"
+      ],
+      "issue": "Scheduled airfares must be quoted live.",
+      "impact": "All three flight sectors are excluded.",
+      "required_action": "Price every sector live with fare class, taxes, baggage and validity."
+    },
+    {
+      "id": "review-jnb-assistance",
+      "service_ids": [
+        "jnb_meet_departure"
+      ],
+      "issue": "No Johannesburg assistance tariff is supplied.",
+      "impact": "Departure assistance is unpriced.",
+      "required_action": "Obtain a Johannesburg supplier rate."
+    }
+  ]
+}

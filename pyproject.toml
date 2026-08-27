@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quote-trace"
+version = "0.1.0"
+description = "Deterministic, provenance-first costing for the Aterra technical exercise"
+requires-python = ">=3.11"
+dependencies = [
+    "pypdf==6.0.0",
+    "python-dotenv==1.2.3",
+]
+
+[project.optional-dependencies]
+test = ["pytest==8.4.1"]
+
+[project.scripts]
+quote-trace = "quote_trace.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
